@@ -1,0 +1,22 @@
+[config]
+
+[templates]
+[templates.starshipCustom]
+input_path = "~/.config/noctalia/templates/starshipCustom.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.hyprlandCustom]
+input_path = "~/.config/noctalia/templates/hyprlandCustom.conf"
+output_path = "~/.config/hypr/theme.conf"
+
+[templates.keyboardColor]
+input_path = "~/.config/noctalia/templates/keyboardColor.txt"
+output_path = "~/.config/keyboardColor.txt"
+
+# User-defined templates
+# Add your custom templates below
+# Example:
+# [templates.myapp]
+# input_path = "~/.config/noctalia/templates/myapp.css"
+# output_path = "~/.config/myapp/theme.css"
+# post_hook = "myapp --reload-theme"

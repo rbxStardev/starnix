@@ -1,0 +1,69 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+palette = "noctalia"
+
+format = "[░▒▓](p_main)[  ](bg:p_main fg:on_p_main)[](bg:dir_bg fg:p_main)$directory[](fg:dir_bg bg:git_bg)$git_branch$git_status[](fg:git_bg bg:lang_bg)$nodejs$rust$golang$php[](fg:lang_bg bg:time_bg)$time[ ](fg:time_bg)\n$character"
+
+[character]
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold green)"
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:on_dir bg:dir_bg"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+Documents = "󰈙 "
+Downloads = " "
+Music = " "
+Pictures = " "
+
+[git_branch]
+format = "[[ $symbol $branch ](fg:dir_bg bg:git_bg)]($style)"
+style = "bg:git_bg"
+symbol = ""
+
+[git_status]
+format = "[[($all_status$ahead_behind )](fg:dir_bg bg:git_bg)]($style)"
+style = "bg:git_bg"
+
+[golang]
+format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = ""
+
+[nodejs]
+format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = ""
+
+[php]
+format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = ""
+
+[rust]
+format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = ""
+
+[time]
+disabled = false
+format = "[[  $time ](fg:on_time bg:time_bg)]($style)"
+style = "bg:time_bg"
+time_format = "%R"
+
+[palettes.noctalia]
+p_main = "{{colors.primary.default.hex}}"
+on_p_main = "{{colors.on_primary.default.hex}}"
+dir_bg    = "{{colors.secondary.default.hex}}"
+on_dir    = "{{colors.on_secondary.default.hex}}"
+git_bg    = "{{colors.secondary_container.default.hex}}"
+on_git    = "{{colors.on_secondary_container.default.hex}}"
+lang_bg   = "{{colors.tertiary_container.default.hex}}"
+on_lang   = "{{colors.on_tertiary_container.default.hex}}"
+time_bg   = "{{colors.surface_container.default.hex}}"
+on_time   = "{{colors.on_surface_variant.default.hex}}"
+err       = "{{colors.error.default.hex}}"
