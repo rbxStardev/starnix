@@ -6,34 +6,6 @@
   pkgs,
   ...
 }: let
-  # customWallpaper = ./background.jpg;
-  # mainColor = "#ddffd9";
-  # accentColor = "#55efc4";
-  # placeholderColor = "#a2ad91";
-  /*
-  sddm-personal = pkgs.stdenvNoCC.mkDerivation {
-    pname = "sddm-personal";
-    version = "1.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "kamack38";
-      repo = "sddm-greenleaf";
-      rev = "main";
-      hash = "sha256-AGcC7nlrW13dRVVHtgl6+vvnM1feXU/xPhntpfYWY9Y=";
-    };
-
-    installPhase = ''
-      mkdir -p $out/share/sddm/themes/sddm-personal
-      cp -aR . $out/share/sddm/themes/sddm-personal
-
-      cp -f ${customWallpaper} $out/share/sddm/themes/sddm-personal/background.png
-
-      sed -i "s/^MainColor=.*#removethishashtag#/MainColor=\"${mainColor}\"/" $out/share/sddm/themes/sddm-personal/theme.conf
-      sed -i "s/^AccentColor=.*#removethishashtag#/AccentColor=\"${accentColor}\"/" $out/share/sddm/themes/sddm-personal/theme.conf
-      sed -i "s/^PlaceholderColor=.*#removethishashtag#/PlaceholderColor=\"${placeholderColor}\"/" $out/share/sddm/themes/sddm-personal/theme.conf
-    '';
-  };
-  */
   atlauncherVersion = "3.4.40.4";
   atlauncherCustom = pkgs.stdenvNoCC.mkDerivation {
     pname = "atlauncher-custom";
@@ -271,31 +243,7 @@ in {
 
   # Desktop environment, window managers and theme
   services.xserver.enable = true;
-
-  # Enable sddm
-  /*
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    wayland.compositor = "kwin";
-    theme = "sddm-personal";
-    package = pkgs.kdePackages.sddm;
-
-    extraPackages = with pkgs.kdePackages; [
-      qt5compat
-      qtdeclarative
-      qtsvg
-    ];
-
-    settings = {
-      Theme = {
-        CursorTheme = "Adwaita";
-        CursorSize = 24;
-      };
-    };
-  };
-  */
-
+  
   services.displayManager.autoLogin = {
     enable = true;
     user = "star";
