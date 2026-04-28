@@ -1,10 +1,10 @@
 // CONFIGURATION
-const float DURATION = 0.15;               // How long the ripple animates (seconds)
-const float MAX_SIZE = 0.05;             // Max radius in normalized coords (0.5 = 1/4 screen height)
-const float ANIMATION_START_OFFSET = 0.0;        // Start the ripple slightly progressed (0.0 - 1.0)
+const float DURATION = 0.15; // How long the ripple animates (seconds)
+const float MAX_SIZE = 0.05; // Max radius in normalized coords (0.5 = 1/4 screen height)
+const float ANIMATION_START_OFFSET = 0.0; // Start the ripple slightly progressed (0.0 - 1.0)
 vec4 COLOR = vec4(0.35, 0.36, 0.44, 1.0); // change to iCurrentCursorColor for your cursor's color
 const float CURSOR_WIDTH_CHANGE_THRESHOLD = 0.5; // Triggers ripple if cursor width changes by this fraction
-const float BLUR = 3.0;                    // Blur level in pixels
+const float BLUR = 3.0; // Blur level in pixels
 
 // Easing functions
 float easeOutQuad(float t) {
@@ -79,12 +79,12 @@ vec2 normalize(vec2 value, float isPosition) {
     return (value * 2.0 - (iResolution.xy * isPosition)) / iResolution.y;
 }
 
-float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b){
+float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b) {
     vec2 d = abs(p - xy) - b;
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
 }
 
-void mainImage(out vec4 fragColor, in vec2 fragCoord){
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     #if !defined(WEB)
     fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
     #endif
@@ -99,18 +99,17 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     vec2 centerCC = currentCursor.xy - (currentCursor.zw * offsetFactor);
 
     float cellWidth = max(currentCursor.z, previousCursor.z); // width of the 'block' cursor
-    
+
     // check for significant width change
     float widthChange = abs(currentCursor.z - previousCursor.z);
     float widthThresholdNorm = cellWidth * CURSOR_WIDTH_CHANGE_THRESHOLD;
     float isModeChange = step(widthThresholdNorm, widthChange);
 
-
     // ANIMATION
     float rippleProgress = (iTime - iTimeCursorChange) / DURATION + ANIMATION_START_OFFSET;
     // don't clamp yet; we need to know if it's > 1.0 (finished)
     float isAnimating = 1.0 - step(1.0, rippleProgress); // progress < 1.0 ? 1.0: 0.0
-    
+
     // WHY NOT BRANCHLESS??? here ya go:
     // because we NEVER have divergence, even in this if/else branchfull logic
     // why? because its UNIFORM branching (ie, all fragments take the same path) which modern GPUs handles efficiently
@@ -131,7 +130,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 
         // RIPPLE CALCULATION
         float rippleExpansion = easedProgress * MAX_SIZE;
-        
+
         // float fade = 1.0; // no fade
         // float fade = 1.0 - easedProgress; // linear fade
         // float fade = 1.0 - smoothstepPulse(rippleProgress);
@@ -140,10 +139,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
         // float fade = doubleSmoothstepPulse(rippleProgress);
         // float fade = exponentialDecayPulse(rippleProgress);
         // float fade = sinPulse(rippleProgress);
-        
+
         vec2 halfSizeCC = vec2(currentCursor.z, currentCursor.w) * 0.5 + vec2(rippleExpansion);
         float sdfRectRing = getSdfRectangle(vu, centerCC, halfSizeCC);
-        
+
         // Antialias (1-pixel width in normalized coords)
         float antiAliasSize = normalize(vec2(BLUR, BLUR), 0.0).x;
         float ripple = (1.0 - smoothstep(-antiAliasSize, antiAliasSize, sdfRectRing)) * fade;

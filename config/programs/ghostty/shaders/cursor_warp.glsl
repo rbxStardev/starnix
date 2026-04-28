@@ -4,7 +4,7 @@ const float DURATION = 0.2; // total animation time
 const float TRAIL_SIZE = 0.8; // 0.0 = all corners move together. 1.0 = max smear (leading corners jump instantly)
 const float THRESHOLD_MIN_DISTANCE = 1.5; // min distance to show trail (units of cursor height)
 const float BLUR = 1.0; // blur size in pixels (for antialiasing)
-const float TRAIL_THICKNESS = 1.0;  // 1.0 = full cursor height, 0.0 = zero height, >1.0 = funky aah
+const float TRAIL_THICKNESS = 1.0; // 1.0 = full cursor height, 0.0 = zero height, >1.0 = funky aah
 const float TRAIL_THICKNESS_X = 0.9;
 
 const float FADE_ENABLED = 0.0; // 1.0 to enable fade gradient along the trail, 0.0 to disable
@@ -125,7 +125,7 @@ vec2 normalize(vec2 value, float isPosition) {
 }
 
 float antialising(float distance, float blurAmount) {
-  return 1. - smoothstep(0., normalize(vec2(blurAmount, blurAmount), 0.).x, distance);
+    return 1. - smoothstep(0., normalize(vec2(blurAmount, blurAmount), 0.).x, distance);
 }
 
 // Determines animation duration based on a corner's alignment with the move direction(dot product)
@@ -136,7 +136,7 @@ float antialising(float distance, float blurAmount) {
 float getDurationFromDot(float dot_val, float DURATION_LEAD, float DURATION_SIDE, float DURATION_TRAIL) {
     float isLead = step(0.5, dot_val);
     float isSide = step(-0.5, dot_val) * (1.0 - isLead);
-    
+
     // Start with trailing duration
     float duration = mix(DURATION_TRAIL, DURATION_SIDE, isSide);
     // Mix in leading duration
@@ -144,7 +144,7 @@ float getDurationFromDot(float dot_val, float DURATION_LEAD, float DURATION_SIDE
     return duration;
 }
 
-void mainImage(out vec4 fragColor, in vec2 fragCoord){
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     #if !defined(WEB)
     fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
     #endif
@@ -162,14 +162,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     vec2 halfSizeCP = previousCursor.zw * 0.5;
 
     float sdfCurrentCursor = getSdfRectangle(vu, centerCC, halfSizeCC);
-    
+
     float lineLength = distance(centerCC, centerCP);
     float minDist = currentCursor.w * THRESHOLD_MIN_DISTANCE;
-    
+
     vec4 newColor = vec4(fragColor);
 
     float baseProgress = iTime - iTimeCursorChange;
-    
+
     if (lineLength > minDist && baseProgress < DURATION - 0.001) {
         // defining corners of cursors
 
@@ -220,9 +220,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 
         // dot products for each corner, determining alignment with movement direction
         float dot_tl = dot(vec2(-1., 1.), s);
-        float dot_tr = dot(vec2( 1., 1.), s);
-        float dot_bl = dot(vec2(-1.,-1.), s);
-        float dot_br = dot(vec2( 1.,-1.), s);
+        float dot_tr = dot(vec2(1., 1.), s);
+        float dot_bl = dot(vec2(-1., -1.), s);
+        float dot_br = dot(vec2(1., -1.), s);
 
         // assign durations based on dot products
         float dur_tl = getDurationFromDot(dot_tl, DURATION_LEAD, DURATION_SIDE, DURATION_TRAIL);
@@ -232,18 +232,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 
         // check direction of horizontal movement
         float isMovingRight = step(0.5, s.x);
-        float isMovingLeft  = step(0.5, -s.x);
+        float isMovingLeft = step(0.5, -s.x);
 
         // calculate vertical-rail durations
         float dot_right_edge = (dot_tr + dot_br) * 0.5;
         float dur_right_rail = getDurationFromDot(dot_right_edge, DURATION_LEAD, DURATION_SIDE, DURATION_TRAIL);
-        
+
         float dot_left_edge = (dot_tl + dot_bl) * 0.5;
         float dur_left_rail = getDurationFromDot(dot_left_edge, DURATION_LEAD, DURATION_SIDE, DURATION_TRAIL);
 
         float final_dur_tl = mix(dur_tl, dur_left_rail, isMovingLeft);
         float final_dur_bl = mix(dur_bl, dur_left_rail, isMovingLeft);
-        
+
         float final_dur_tr = mix(dur_tr, dur_right_rail, isMovingRight);
         float final_dur_br = mix(dur_br, dur_right_rail, isMovingRight);
 
@@ -264,19 +264,19 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 
         // --- FADE GRADIENT CALCULATION ---
         vec2 fragVec = vu - centerCP;
-        
+
         // project fragment onto movement vector, normalize to [0, 1]
         // 0.0 at tail, 1.0 at head
         // tiny epsilon to avoid division by zero if moveVec is (0,0)
         float fadeProgress = clamp(dot(fragVec, moveVec) / (dot(moveVec, moveVec) + 1e-6), 0.0, 1.0);
 
         vec4 trail = TRAIL_COLOR;
-        
+
         float effectiveBlur = BLUR;
         if (BLUR < 2.5) {
-          // no antialising on horizontal/vertical movement, fixes 'pulse' like thing on end cursor
-          float isDiagonal = abs(s.x) * abs(s.y); // 1.0 if diagonal, 0.0 if H/V
-          float effectiveBlur = mix(0.0, BLUR, isDiagonal);
+            // no antialising on horizontal/vertical movement, fixes 'pulse' like thing on end cursor
+            float isDiagonal = abs(s.x) * abs(s.y); // 1.0 if diagonal, 0.0 if H/V
+            float effectiveBlur = mix(0.0, BLUR, isDiagonal);
         }
         float shapeAlpha = antialising(sdfTrail, effectiveBlur); // shape mask
 
@@ -296,7 +296,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 
         // punch hole on the trail, so current cursor is drawn on top
         newColor = mix(newColor, fragColor, step(sdfCurrentCursor, 0.));
-
     }
 
     fragColor = newColor;

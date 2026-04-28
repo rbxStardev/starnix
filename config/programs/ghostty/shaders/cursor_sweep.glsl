@@ -120,7 +120,7 @@ vec2 normalize(vec2 value, float isPosition) {
 }
 
 float antialising(float distance) {
-	return 1. - smoothstep(0., normalize(vec2(BLUR, BLUR), 0.).x, distance);
+    return 1. - smoothstep(0., normalize(vec2(BLUR, BLUR), 0.).x, distance);
 }
 
 float getTopVertexFlag(vec2 a, vec2 b) {
@@ -135,8 +135,7 @@ vec2 getRectangleCenter(vec4 rectangle) {
     return vec2(rectangle.x + (rectangle.z / 2.), rectangle.y - (rectangle.w / 2.));
 }
 
-
-void mainImage(out vec4 fragColor, in vec2 fragCoord){
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     #if !defined(WEB)
     fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
     #endif
@@ -144,7 +143,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     // normalization & setup(-1, 1 coords)
     vec2 vu = normalize(fragCoord, 1.);
     vec2 offsetFactor = vec2(-.5, 0.5);
-    
+
     vec4 currentCursor = vec4(normalize(iCurrentCursor.xy, 1.), normalize(iCurrentCursor.zw, 0.));
     vec4 previousCursor = vec4(normalize(iPreviousCursor.xy, 1.), normalize(iPreviousCursor.zw, 0.));
 
@@ -152,16 +151,16 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     vec2 centerCP = previousCursor.xy - (previousCursor.zw * offsetFactor);
 
     float sdfCurrentCursor = getSdfRectangle(vu, centerCC, currentCursor.zw * 0.5);
-    
-     float lineLength = distance(centerCC, centerCP);
-	
-     vec4 newColor = vec4(fragColor);
-	
-     float minDist = currentCursor.w * 1.5;
-     float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
-     if (lineLength > minDist) {
-         // --- Animation Logic ---
-         float shrinkFactor = ease(progress);
+
+    float lineLength = distance(centerCC, centerCP);
+
+    vec4 newColor = vec4(fragColor);
+
+    float minDist = currentCursor.w * 1.5;
+    float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
+    if (lineLength > minDist) {
+        // --- Animation Logic ---
+        float shrinkFactor = ease(progress);
 
         // detect straight moves
         vec2 delta = abs(centerCC - centerCP);
@@ -182,7 +181,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
         vec2 v3_start = mix(v0, v3_full, TRAIL_LENGTH);
         vec2 v2_anim = mix(v2_start, v1, shrinkFactor);
         vec2 v3_anim = mix(v3_start, v0, shrinkFactor);
-        
+
         float sdfTrail_diag = getSdfParallelogram(vu, v0, v1, v2_anim, v3_anim);
 
         // --- Making rectangle sdf (straight moves) ---
@@ -210,7 +209,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
         // Punch hole
         newColor = mix(newColor, fragColor, step(sdfCurrentCursor, 0.));
     }
-
 
     fragColor = newColor;
 }
