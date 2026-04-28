@@ -18,6 +18,7 @@ in {
   home.packages = with pkgs; [
     jq
     eza
+    bat
     wl-clipboard
     qt6Packages.qt6ct
     qt6.qtbase

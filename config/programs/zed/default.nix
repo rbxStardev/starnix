@@ -15,6 +15,7 @@
       "xml"
       "tombi"
       "slang"
+      "glsl"
     ];
 
     extraPackages = with pkgs; [nixd nil alejandra];

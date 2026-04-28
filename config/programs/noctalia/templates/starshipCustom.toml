@@ -51,6 +51,8 @@ symbol = ""
 
 [nix_shell]
 format = "[[ $symbol ($state) ](fg:dir_bg bg:lang_bg)]($style)"
+impure_msg = "impure"
+pure_msg = "pure"
 style = "bg:lang_bg"
 symbol = ""
 

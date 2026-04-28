@@ -170,6 +170,7 @@ in {
     uget
     uget-integrator # for firefox
     sox # for audio
+    nh
 
     # Custom SDDM Theme
     #sddm-personal
@@ -243,7 +244,7 @@ in {
 
   # Desktop environment, window managers and theme
   services.xserver.enable = true;
-  
+
   services.displayManager.autoLogin = {
     enable = true;
     user = "star";

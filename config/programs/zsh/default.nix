@@ -14,11 +14,14 @@
     shellAliases = {
       switch = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix";
       stop = "shutdown now";
+
       ls = "eza --icons --group-directories-first";
       l = "ls";
       ll = "eza -l --icons --group-directories-first";
       la = "eza -a --icons --group-directories-first";
       lla = "eza -la --icons --group-directories-first";
+
+      cat = "bat";
     };
 
     oh-my-zsh = {
