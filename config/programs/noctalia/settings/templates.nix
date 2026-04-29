@@ -30,6 +30,10 @@
           id = "btop";
           enabled = true;
         }
+        {
+          id = "helix";
+          enabled = true;
+        }
       ];
       enableUserTheming = true;
     };
