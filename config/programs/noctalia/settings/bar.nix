@@ -2,7 +2,7 @@
   programs.noctalia-shell.settings = {
     bar = {
       barType = "simple";
-      position = "top";
+      position = "left";
       monitors = [];
       density = "default";
       showOutline = false;
