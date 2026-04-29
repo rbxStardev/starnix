@@ -159,6 +159,7 @@ in {
     atlauncherCustom
     gitkraken
     zed-editor
+    helix
     jetbrains.rider
     zapzap
     telegram-desktop
