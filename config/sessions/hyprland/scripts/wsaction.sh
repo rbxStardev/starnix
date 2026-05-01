@@ -13,7 +13,7 @@ fi
 active_ws=$(hyprctl activeworkspace -j | jq -r '.id')
 
 if [[ -n "$group" ]]; then
-	hyprctl dispatch $1 $(( ($2 - 1) * 10 + $active_ws % 10 ))
+	hyprctl dispatch $1 $((($2 - 1) * 10 + $active_ws % 10))
 else
-	hyprctl dispatch $1 $(( ($active_ws - 1) / 10 * 10 + $2 ))
+	hyprctl dispatch $1 $((($active_ws - 1) / 10 * 10 + $2))
 fi

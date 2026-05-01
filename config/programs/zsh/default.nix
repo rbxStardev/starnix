@@ -12,7 +12,6 @@
     initContent = builtins.readFile ./zsh-init.sh;
 
     shellAliases = {
-      switch = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix";
       stop = "shutdown now";
 
       ls = "eza --icons --group-directories-first";

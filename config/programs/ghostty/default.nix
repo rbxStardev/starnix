@@ -11,7 +11,7 @@
       window-padding-x = 25;
       window-padding-y = 25;
       command = "tmux new-session -A -s main";
-      custom-shader = "~/.config/ghostty/shaders/cursor_warp.glsl";
+      custom-shader = "~/.config/ghostty/shaders/cursor_blaze.glsl";
     };
   };
 

@@ -2,7 +2,7 @@
 
 palette = "noctalia"
 
-format = "[░▒▓](p_main)[  ](bg:p_main fg:on_p_main)[](bg:dir_bg fg:p_main)$directory[](fg:dir_bg bg:git_bg)$git_branch$git_status[](fg:git_bg bg:lang_bg)$nix_shell$nodejs$rust$golang$php[](fg:lang_bg bg:time_bg)$time[ ](fg:time_bg)\n$character"
+format = "[░▒▓](p_main)[  ](bg:p_main fg:on_p_main)[](fg:p_main bg:dir_bg)$directory[](fg:dir_bg bg:git_bg)$git_branch$git_status[](fg:git_bg bg:lang_bg)$nix_shell$nodejs$rust$golang$php[](fg:lang_bg bg:time_bg)$time[ ](fg:time_bg)\n$character"
 
 [character]
 error_symbol = "[❯](bold red)"
@@ -21,36 +21,38 @@ Music = " "
 Pictures = " "
 
 [git_branch]
-format = "[[ $symbol $branch ](fg:dir_bg bg:git_bg)]($style)"
+# Mudado de fg:dir_bg para fg:on_git
+format = "[[ $symbol $branch ](fg:on_git bg:git_bg)]($style)"
 style = "bg:git_bg"
 symbol = ""
 
 [git_status]
-format = "[[($all_status$ahead_behind )](fg:dir_bg bg:git_bg)]($style)"
+# Mudado de fg:dir_bg para fg:on_git
+format = "[[($all_status$ahead_behind )](fg:on_git bg:git_bg)]($style)"
 style = "bg:git_bg"
 
 [golang]
-format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
 style = "bg:lang_bg"
 symbol = ""
 
 [nodejs]
-format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
 style = "bg:lang_bg"
 symbol = ""
 
 [php]
-format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
 style = "bg:lang_bg"
 symbol = ""
 
 [rust]
-format = "[[ $symbol ($version) ](fg:dir_bg bg:lang_bg)]($style)"
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
 style = "bg:lang_bg"
 symbol = ""
 
 [nix_shell]
-format = "[[ $symbol ($state) ](fg:dir_bg bg:lang_bg)]($style)"
+format = "[[ $symbol ($state) ](fg:on_lang bg:lang_bg)]($style)"
 impure_msg = "impure"
 pure_msg = "pure"
 style = "bg:lang_bg"
@@ -63,14 +65,14 @@ style = "bg:time_bg"
 time_format = "%R"
 
 [palettes.noctalia]
-p_main = "{{colors.primary.default.hex}}"
-on_p_main = "{{colors.on_primary.default.hex}}"
-dir_bg = "{{colors.secondary.default.hex}}"
-on_dir = "{{colors.on_secondary.default.hex}}"
-git_bg = "{{colors.secondary_container.default.hex}}"
-on_git = "{{colors.on_secondary_container.default.hex}}"
-lang_bg = "{{colors.tertiary_container.default.hex}}"
-on_lang = "{{colors.on_tertiary_container.default.hex}}"
-time_bg = "{{colors.surface_container.default.hex}}"
-on_time = "{{colors.on_surface_variant.default.hex}}"
-err = "{{colors.error.default.hex}}"
+p_main = "green"           # primary
+on_p_main = "black"        # on_primary
+dir_bg = "yellow"          # secondary
+on_dir = "black"           # on_secondary
+git_bg = "blue"            # tertiary (para diferenciar do diretório)
+on_git = "black"           # on_tertiary
+lang_bg = "cyan"           # secondary_fixed_dim
+on_lang = "black"          # on_secondary_container
+time_bg = "bright-black"   # surface_variant
+on_time = "black"          # on_surface_variant
+err = "red"                # error
