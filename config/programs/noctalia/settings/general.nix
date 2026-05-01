@@ -13,7 +13,7 @@
       animationSpeed = 1;
       animationDisabled = false;
       compactLockScreen = false;
-      lockScreenAnimations = false;
+      lockScreenAnimations = true;
       lockOnSuspend = true;
       showSessionButtonsOnLockScreen = true;
       showHibernateOnLockScreen = false;
@@ -31,9 +31,9 @@
       lockScreenCountdownDuration = 10000;
       autoStartAuth = false;
       allowPasswordWithFprintd = false;
-      clockStyle = "custom";
-      clockFormat = "hh\nmm";
-      passwordChars = false;
+      clockStyle = "digital";
+      # clockFormat = "hh\nmm";
+      passwordChars = true;
       lockScreenMonitors = [];
       lockScreenBlur = 0;
       lockScreenTint = 0;

@@ -3,6 +3,8 @@
     nil
     nixd
     alejandra
+    marksman
+    # markdown-oxide
   ];
 
   programs.helix = {

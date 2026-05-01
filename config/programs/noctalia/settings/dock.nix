@@ -26,7 +26,7 @@
       deadOpacity = 0.6;
       animationSpeed = 1;
       sitOnFrame = false;
-      showDockIndicator = false;
+      showDockIndicator = true;
       indicatorThickness = 3;
       indicatorColor = "primary";
       indicatorOpacity = 0.6;
