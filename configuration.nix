@@ -165,6 +165,14 @@
   # Program configurations
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+    flake = "/home/star/nix";
+  };
   services.supergfxd.enable = true;
   systemd.services.supergfxd.path = [pkgs.pciutils];
   services.asusd = {
