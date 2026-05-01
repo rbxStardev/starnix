@@ -116,6 +116,8 @@
     obs-studio
     steam-run
     vesktop
+    blender
+    krita
     pear-desktop
     pavucontrol
     uget

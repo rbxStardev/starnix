@@ -51,8 +51,7 @@ in {
     getFrom
     "https://github.com/yeyushengfan258/ArcMidnight-Cursors/archive/refs/heads/main.zip"
     "sha256-VgOpt0rukW0+rSkLFoF9O0xO/qgwieAchAev1vjaqPE="
-    "ArcMidnight-Cursors"; # <- O nome do tema do cursor
-
+    "ArcMidnight-Cursors";
   qt = {
     enable = true;
     platformTheme.name = "qt6ct";
