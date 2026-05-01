@@ -106,6 +106,7 @@
     tmate
     ghostty
     (callPackage ./pkgs/atlauncher.nix {})
+    (callPackage ./pkgs/hakchi2.nix {})
     gitkraken
     zed-editor
     helix
