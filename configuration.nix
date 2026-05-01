@@ -107,10 +107,10 @@
     tmate
     ghostty
     (callPackage ./pkgs/atlauncher.nix {})
-    gitkraken
+    # gitkraken
     zed-editor
     helix
-    jetbrains.rider
+    # jetbrains.rider
     zapzap
     telegram-desktop
     obs-studio

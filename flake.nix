@@ -2,7 +2,8 @@
   description = "One flake to rule them all!";
   inputs = {
     nixpkgs = {
-      url = "nixpkgs/nixos-unstable";
+      # url = "nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/2d0720da19a2";
     };
 
     home-manager = {
