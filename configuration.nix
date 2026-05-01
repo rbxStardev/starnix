@@ -37,6 +37,7 @@
     ripgrep
     fd
     unzip
+    p7zip
     gnumake
     gcc
     cmake
