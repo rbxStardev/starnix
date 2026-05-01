@@ -349,11 +349,6 @@
 
   nix.settings.auto-optimise-store = true;
 
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 14d";
-  };
   boot = {
     consoleLogLevel = 0;
     initrd.verbose = false;
