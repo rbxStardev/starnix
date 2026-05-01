@@ -153,6 +153,7 @@ in {
     f3d # 3d :0
 
     # Apps i use
+    mgba
     tmux
     tmate
     ghostty
