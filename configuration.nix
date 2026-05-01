@@ -320,6 +320,22 @@ in {
   # Set your time zone.
   time.timeZone = "America/Bahia";
 
+  # Firewall
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [22]; # Hakchi TCP
+    allowedUDPPortRanges = [
+      {
+        from = 3700;
+        to = 3800;
+      } # Hakchi UDP
+      {
+        from = 5300;
+        to = 5400;
+      } # Hakchi UDP
+    ];
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -361,6 +377,12 @@ in {
   # Power Management Services
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
+
+  # Udev
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="1f3a", ATTR{idProduct}=="efe8", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6863", MODE="0666"
+  '';
 
   # Nix settings and maintenance
   nixpkgs.config.allowUnfree = true;
