@@ -175,6 +175,10 @@
     };
     flake = "/home/star/nix";
   };
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
   services.supergfxd.enable = true;
   systemd.services.supergfxd.path = [pkgs.pciutils];
   services.asusd = {
