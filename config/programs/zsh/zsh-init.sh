@@ -24,4 +24,4 @@ function slashes() {
   done
 }
 
-fastfetch
+# fastfetch
