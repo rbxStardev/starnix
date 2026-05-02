@@ -150,6 +150,8 @@
     GLFW_PATH = "${pkgs.glfw}/lib";
     ASSIMP_PATH = "${pkgs.assimp.lib}/lib";
     VULKAN_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
+
+    LD_LIBRARY_PATH = "${pkgs.glfw}/lib:${pkgs.assimp.lib}/lib:${pkgs.vulkan-loader}/lib";
   };
 
   environment.pathsToLink = ["/share/applications" "/share/thumbnailers"];

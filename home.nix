@@ -30,7 +30,7 @@ in {
   home.stateVersion = "25.11";
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
   };
 
   home.pointerCursor = let
