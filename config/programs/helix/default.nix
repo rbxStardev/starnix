@@ -27,10 +27,31 @@
     settings = {
       theme = "noctalia";
 
-      editor.cursor-shape = {
-        insert = "bar";
-        normal = "bar";
-        select = "underline";
+      editor = {
+        bufferline = "multiple";
+        color-modes = true;
+        popup-border = "all";
+        statusline = {
+          left = ["mode" "spinner" "spacer" "version-control" "file-name" "file-modification-indicator"];
+          center = [];
+          right = ["diagnostics" "selections" "position" "file-type"];
+          separator = "|";
+          mode = {
+            normal = "󰈈 NOR";
+            insert = " INS";
+            select = " SEL";
+          };
+          diagnostics = ["warning" "error"];
+          workspace-diagnostics = ["warning" "error"];
+        };
+        cursor-shape = {
+          insert = "bar";
+          normal = "bar";
+          select = "underline";
+        };
+        indent-guides = {
+          render = true;
+        };
       };
     };
 
