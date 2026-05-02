@@ -62,6 +62,23 @@ vec2 getRectangleCenter(vec4 rectangle) {
     return vec2(rectangle.x + (rectangle.z / 2.), rectangle.y - (rectangle.w / 2.));
 }
 
+float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float getCircleMask(vec2 uv, float alphaMod) {
+    vec2 grid = uv * 40.0; 
+    vec2 id = floor(grid);
+    vec2 f = fract(grid) - 0.5;
+
+    float randVal = random(id);
+
+    float maxRadius = smoothstep(0.2, 1.0, alphaMod) * randVal * 0.8;
+    float dist = length(f);
+    
+    return smoothstep(maxRadius, maxRadius + 0.05, dist);
+}
+
 const float DURATION = .5;
 const float DRAW_THRESHOLD = 1.5;
 const bool HIDE_TRAILS_ON_THE_SAME_LINE = false;
@@ -116,9 +133,24 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         float sdfCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
         float sdfTrail = getSdfParallelogram(vu, v0, v1, v2, v3);
 
+        // 1. Puxamos a máscara original
+        float mask = getCircleMask(vu, alphaModifier);
+        
+        // 2. Criamos uma proteção para a borda
+        // O valor do sdfTrail é negativo dentro do rastro e vai até 0 na borda.
+        // Se o pixel estiver muito perto da borda (entre -0.03 e -0.005), isEdge sobe para 1.0.
+        float isEdge = smoothstep(-0.03, -0.005, sdfTrail);
+        
+        // 3. Mesclamos a máscara com a proteção:
+        // Onde for borda (isEdge = 1.0), a máscara se torna 1.0, impedindo o buraco de existir ali.
+        mask = max(mask, isEdge);
+
         newColor = mix(newColor, TRAIL_COLOR_ACCENT, 1.0 - smoothstep(sdfTrail, -0.01, 0.001));
         newColor = mix(newColor, trailGradient, antialising(sdfTrail));
-        newColor = mix(fragColor, newColor, 1.0 - alphaModifier);
-        fragColor = mix(newColor, fragColor, step(sdfCursor, 0));
+        
+        // A máscara agora só perfura o núcleo do rastro, deixando o glow ao redor sólido!
+        newColor = mix(fragColor, newColor, (1.0 - alphaModifier) * mask);
+        
+        fragColor = mix(newColor, fragColor, step(sdfCursor, 0.0));
     }
 }

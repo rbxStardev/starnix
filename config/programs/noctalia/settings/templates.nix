@@ -34,6 +34,14 @@
           id = "helix";
           enabled = true;
         }
+        {
+          id = "cava";
+          enabled = true;
+        }
+        {
+          id = "yazi";
+          enabled = true;
+        }
       ];
       enableUserTheming = true;
     };

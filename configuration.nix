@@ -80,6 +80,8 @@
     unimatrix
     pipes
     btop
+    cava
+    lavat
 
     # Basic File Handling
     mpv
@@ -110,6 +112,7 @@
     # gitkraken
     zed-editor
     helix
+    yazi
     # jetbrains.rider
     zapzap
     telegram-desktop
