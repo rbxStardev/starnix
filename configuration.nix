@@ -116,6 +116,7 @@
     # jetbrains.rider
     zapzap
     telegram-desktop
+    element-desktop
     obs-studio
     steam-run
     vesktop
