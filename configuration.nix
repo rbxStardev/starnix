@@ -127,6 +127,7 @@
     uget-integrator # for firefox
     sox # for audio
     nh
+    yt-dlp
 
     # Custom SDDM Theme
     #sddm-personal
