@@ -119,6 +119,7 @@
     obs-studio
     steam-run
     vesktop
+    ankama-launcher
     blender
     krita
     pear-desktop
