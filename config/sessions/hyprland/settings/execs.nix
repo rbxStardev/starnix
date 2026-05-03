@@ -8,8 +8,6 @@ in {
       "noctalia-shell &"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
-      "gsettings set org.gnome.desktop.interface cursor-theme ${vars.cursorTheme}"
-      "gsettings set org.gnome.desktop.interface cursor-size ${toString vars.cursorSize}"
     ];
   };
 }
