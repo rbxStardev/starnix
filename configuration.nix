@@ -237,7 +237,11 @@
       xdg-desktop-portal-hyprland
     ];
     config = {
-      hyprland.default = ["hyprland" "gtk"];
+      hyprland = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+        "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+      };
       common.default = ["gtk"];
     };
   };
