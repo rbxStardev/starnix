@@ -3,15 +3,23 @@
   pkgs,
   ...
 }: let
-  dir = ./settings;
-  files = builtins.readDir dir;
-  nixFiles =
+  settingsDir = ./settings;
+  settingsFiles = builtins.readDir settingsDir;
+  settingsNixFiles =
     builtins.filter
     (name: builtins.match ".*\\.nix" name != null)
-    (builtins.attrNames files);
-  fileImports = map (name: dir + "/${name}") nixFiles;
+    (builtins.attrNames settingsFiles);
+  settingsFileImports = map (name: settingsDir + "/${name}") settingsNixFiles;
+
+  pluginsDir = ./plugins;
+  pluginsFiles = builtins.readDir pluginsDir;
+  pluginsNixFiles =
+    builtins.filter
+    (name: builtins.match ".*\\.nix" name != null)
+    (builtins.attrNames pluginsFiles);
+  pluginsFileImports = map (name: pluginsDir + "/${name}") pluginsNixFiles;
 in {
-  imports = fileImports;
+  imports = settingsFileImports ++ pluginsFileImports;
 
   wayland.windowManager.hyprland.enable = true;
 
