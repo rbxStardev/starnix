@@ -22,6 +22,7 @@ in {
   imports = settingsFileImports ++ pluginsFileImports;
 
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.xwayland.enable = true;
 
   home.packages = with pkgs; [
     jq
