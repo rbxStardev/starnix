@@ -129,6 +129,7 @@
     sox # for audio
     nh
     yt-dlp
+    localsend
 
     # Custom SDDM Theme
     #sddm-personal
