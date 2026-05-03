@@ -173,6 +173,11 @@
   users.defaultUserShell = pkgs.zsh;
   system.userActivationScripts.zshrc = "touch -h .zshrc";
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+  };
+
   # Program configurations
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
