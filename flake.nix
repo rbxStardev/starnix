@@ -15,12 +15,17 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
     noctalia,
+    rust-overlay,
     ...
   }: let
     lib = nixpkgs.lib;
@@ -33,6 +38,7 @@
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
+          {nixpkgs.overlays = [rust-overlay.overlays.default];}
           {
             home-manager.extraSpecialArgs = {inherit inputs;};
 

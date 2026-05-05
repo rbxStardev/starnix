@@ -73,6 +73,11 @@
     roslyn-ls
     shader-slang
 
+    # Rust Development
+    (rust-bin.stable.latest.default.override {
+      extensions = ["rust-src" "rust-analyzer" "clippy" "rustfmt"];
+    })
+
     # Showing off
     fastfetch
     tty-clock
