@@ -77,6 +77,7 @@
     (rust-bin.stable.latest.default.override {
       extensions = ["rust-src" "rust-analyzer" "clippy" "rustfmt"];
     })
+    rustlings
 
     # Showing off
     fastfetch
