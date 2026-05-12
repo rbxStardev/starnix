@@ -19,12 +19,12 @@
         critical = true;
       };
       sounds = {
-        enabled = false;
+        enabled = true;
         volume = 0.5;
-        separateSounds = false;
-        criticalSoundFile = "";
-        normalSoundFile = "";
-        lowSoundFile = "";
+        separateSounds = true;
+        criticalSoundFile = ./../assets/critical.mp3;
+        normalSoundFile = ./../assets/normal.mp3;
+        lowSoundFile = ./../assets/low.mp3;
         excludedApps = "discord,firefox,chrome,chromium,edge";
       };
       enableMediaToast = false;

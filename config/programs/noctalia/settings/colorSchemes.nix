@@ -1,8 +1,8 @@
 {...}: {
   programs.noctalia-shell.settings = {
     colorSchemes = {
-      useWallpaperColors = true;
-      predefinedScheme = "Tokyo Night";
+      useWallpaperColors = false;
+      predefinedScheme = "Gruvbox";
       darkMode = true;
       schedulingMode = "off";
       manualSunrise = "06:30";

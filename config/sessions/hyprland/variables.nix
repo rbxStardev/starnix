@@ -39,14 +39,14 @@
 
   # Window Styling
   windowOpacity = 0.95;
-  windowRounding = 20;
-  windowRoundingPower = 2;
+  windowRounding = 0;
+  windowRoundingPower = 0;
 
   windowBorderSize = 1;
 
   # Misc
   volumeStep = 10; # In percent
-  cursorTheme = "ArcMidnight-Cursors";
+  cursorTheme = "phinger-cursors-gruvbox-material";
   cursorSize = 24;
 
   # ### Keybinds ###

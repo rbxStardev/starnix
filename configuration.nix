@@ -109,6 +109,12 @@
     webp-pixbuf-loader
     f3d # 3d :0
 
+    # SDDM theme
+    (callPackage ./pkgs/sddm-themes.nix {theme = "japanese_aesthetic";})
+
+    # Cursor
+    (callPackage ./pkgs/phinger-cursors-gruvbox-material.nix {})
+
     # Apps i use
     mgba
     tmux
@@ -137,9 +143,6 @@
     nh
     yt-dlp
     localsend
-
-    # Custom SDDM Theme
-    #sddm-personal
   ];
 
   environment.sessionVariables = {
@@ -161,10 +164,17 @@
     ASSIMP_PATH = "${pkgs.assimp.lib}/lib";
     VULKAN_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
 
-    LD_LIBRARY_PATH = "${pkgs.glfw}/lib:${pkgs.assimp.lib}/lib:${pkgs.vulkan-loader}/lib";
+    #LD_LIBRARY_PATH = "${pkgs.glfw}/lib:${pkgs.assimp.lib}/lib:${pkgs.vulkan-loader}/lib";
+    LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+      pkgs.glfw
+      pkgs.assimp.lib
+      pkgs.vulkan-loader
+      pkgs.wayland
+      pkgs.libxkbcommon
+    ];
   };
 
-  environment.pathsToLink = ["/share/applications" "/share/thumbnailers"];
+  environment.pathsToLink = ["/share/applications" "/share/thumbnailers" "/share/icons"];
 
   # User accounts and security
   users.users.star = {
@@ -230,6 +240,10 @@
 
   services.displayManager.sddm = {
     enable = true;
+    theme = "sddm-astronaut-theme";
+    settings = {
+      General.InputMethod = "qtvirtualkeyboard";
+    };
   };
 
   # Hyprland

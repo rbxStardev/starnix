@@ -11,7 +11,7 @@
     primaryShowPill = true;
     primaryPillColor = "none";
     primarySize = 0.9;
-    primaryBorderRadius = 1;
+    primaryBorderRadius = 0;
     primaryFocusColor = "primary";
     panelBackgroundColor = "none";
     panelBackgroundEnabled = false;
@@ -23,7 +23,7 @@
         showPill = true;
         pillColor = "primary";
         size = 0.9;
-        borderRadius = 1;
+        borderRadius = 0;
         focusColor = "primary";
       }
       {
@@ -33,7 +33,7 @@
         showPill = true;
         pillColor = "primary";
         size = 0.9;
-        borderRadius = 1;
+        borderRadius = 0;
         focusColor = "primary";
       }
       {
@@ -43,7 +43,7 @@
         showPill = true;
         pillColor = "primary";
         size = 0.9;
-        borderRadius = 1;
+        borderRadius = 0;
         focusColor = "primary";
       }
       {
@@ -53,7 +53,7 @@
         showPill = true;
         pillColor = "primary";
         size = 0.9;
-        borderRadius = 1;
+        borderRadius = 0;
         focusColor = "primary";
       }
       {
@@ -63,7 +63,7 @@
         showPill = true;
         pillColor = "primary";
         size = 0.9;
-        borderRadius = 1;
+        borderRadius = 0;
         focusColor = "primary";
       }
     ];

@@ -2,7 +2,7 @@
 
 palette = "noctalia"
 
-format = "[░▒▓](p_main)[  ](bg:p_main fg:on_p_main)[](fg:p_main bg:dir_bg)$directory[](fg:dir_bg bg:git_bg)$git_branch$git_status[](fg:git_bg bg:lang_bg)$nix_shell$nodejs$rust$golang$php[](fg:lang_bg bg:time_bg)$time[ ](fg:time_bg)\n$character"
+format = "[░▒▓](p_main)[  ](bg:p_main fg:on_p_main)[](fg:p_main bg:dir_bg)$directory[](fg:dir_bg bg:git_bg)$git_branch$git_status[](fg:git_bg bg:lang_bg)$nix_shell$nodejs$rust$golang$php[](fg:lang_bg bg:time_bg)$time[ ](fg:time_bg)\n$character"
 
 [character]
 error_symbol = "[❯](bold red)"

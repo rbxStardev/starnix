@@ -1,11 +1,11 @@
 {...}: {
   programs.noctalia-shell.settings = {
     bar = {
-      barType = "simple";
+      barType = "floating";
       position = "left";
       monitors = [];
       density = "default";
-      showOutline = false;
+      showOutline = true;
       showCapsule = true;
       capsuleOpacity = 1;
       capsuleColorKey = "none";
@@ -13,8 +13,8 @@
       contentPadding = 2;
       fontScale = 1;
       enableExclusionZoneInset = true;
-      backgroundOpacity = 0.93;
-      useSeparateOpacity = false;
+      backgroundOpacity = 0.34;
+      useSeparateOpacity = true;
       marginVertical = 4;
       marginHorizontal = 4;
       frameThickness = 8;

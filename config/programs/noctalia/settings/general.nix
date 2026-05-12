@@ -6,8 +6,8 @@
       showScreenCorners = false;
       forceBlackScreenCorners = false;
       scaleRatio = 1;
-      radiusRatio = 1;
-      iRadiusRatio = 1;
+      radiusRatio = 0;
+      iRadiusRatio = 0;
       boxRadiusRatio = 1;
       screenRadiusRatio = 1;
       animationSpeed = 1;

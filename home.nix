@@ -3,6 +3,9 @@
   inputs,
   ...
 }: let
+  # 0. Get cursor package
+  phinger-gruvbox = pkgs.callPackage ./pkgs/phinger-cursors-gruvbox-material.nix {};
+
   # 1. Define the path to your programs directory
   programsDir = ./config/programs;
 
@@ -19,17 +22,9 @@
   programImports = map (name: programsDir + "/${name}") directories;
 
   cursorConfig = {
-    name = "ArcMidnight-Cursors";
+    name = "phinger-cursors-gruvbox-material";
     size = 24;
-    package = pkgs.runCommand "ArcMidnight-Cursors-theme" {} ''
-      mkdir -p $out/share/icons
-      ln -s ${pkgs.fetchFromGitHub {
-        owner = "yeyushengfan258";
-        repo = "ArcMidnight-Cursors";
-        rev = "7f7d140a41fc134e72747d1052965b2c308b99de";
-        hash = "sha256-VgOpt0rukW0+rSkLFoF9O0xO/qgwieAchAev1vjaqPE=";
-      }}/dist $out/share/icons/ArcMidnight-Cursors
-    '';
+    package = phinger-gruvbox;
   };
 in {
   imports =
@@ -52,9 +47,14 @@ in {
     x11.enable = true;
     inherit (cursorConfig) name size package;
   };
+
   qt = {
     enable = true;
     platformTheme.name = "qt6ct";
+  };
+
+  gtk = {
+    enable = true;
   };
 
   xdg.mimeApps = {

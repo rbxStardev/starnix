@@ -24,7 +24,7 @@
       groupClickAction = "cycle";
       groupIndicatorStyle = "dots";
       deadOpacity = 0.6;
-      animationSpeed = 1;
+      animationSpeed = 2;
       sitOnFrame = false;
       showDockIndicator = true;
       indicatorThickness = 3;

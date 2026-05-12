@@ -8,9 +8,9 @@
       tooltipsEnabled = true;
       scrollbarAlwaysVisible = true;
       boxBorderEnabled = false;
-      panelBackgroundOpacity = 0.93;
+      panelBackgroundOpacity = 0.71;
       translucentWidgets = false;
-      panelsAttachedToBar = true;
+      panelsAttachedToBar = false;
       settingsPanelMode = "attached";
       settingsPanelSideBarCardStyle = false;
     };
