@@ -143,6 +143,7 @@
     nh
     yt-dlp
     localsend
+    rmpc
   ];
 
   environment.sessionVariables = {

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: let
   # 0. Get cursor package
@@ -55,6 +56,17 @@ in {
 
   gtk = {
     enable = true;
+  };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "${config.home.homeDirectory}/Music";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "PipeWire Output"
+      }
+    '';
   };
 
   xdg.mimeApps = {
