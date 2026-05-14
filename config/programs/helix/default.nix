@@ -19,6 +19,11 @@
     taplo
 
     glsl_analyzer
+
+    lua-language-server
+    stylua
+
+    qt6Packages.qtdeclarative
   ];
 
   programs.helix = {
@@ -56,6 +61,28 @@
     };
 
     languages.language = [
+      {
+        name = "lua";
+        auto-format = true;
+        injection-regex = "lua";
+        file-types = ["lua" "rockspec"];
+        shebangs = ["lua" "luajit"];
+        roots = [".luarc.json" ".luacheckrc" ".stylua.toml" "selene.toml" ".git"];
+        comment-token = "--";
+        block-comment-tokens = {
+          start = "--[[";
+          end = "--]]";
+        };
+        indent = {
+          tab-width = 4;
+          unit = "    ";
+        };
+        formatter = {
+          command = "stylua";
+          args = ["-"];
+        };
+        language-servers = ["lua-language-server"];
+      }
       {
         name = "nix";
         auto-format = true;
@@ -95,8 +122,16 @@
     ];
 
     languages.language-server = {
+      nixd = {
+        command = "nixd";
+        config = {
+          nixpkgs = {
+            expr = "import <nixpkgs> {}";
+          };
+        };
+      };
       qmlls = {
-        command = "/etc/profiles/per-user/star/bin/qmlls";
+        command = "qmlls";
         args = ["-E"];
       };
       csharp-ls = {
@@ -104,6 +139,21 @@
       };
       lemminx = {
         command = "lemminx";
+      };
+      lua-language-server = {
+        command = "lua-language-server";
+        config = {
+          Lua = {
+            hint = {
+              enable = true;
+              arrayIndex = "Enable";
+              setType = true;
+              paramName = "All";
+              paramType = true;
+              await = true;
+            };
+          };
+        };
       };
     };
   };
