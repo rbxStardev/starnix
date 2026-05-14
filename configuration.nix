@@ -27,12 +27,9 @@
 
     playerctl
     jdk
-    lua
-    luajitPackages.luarocks
     curl
     lazygit
     tree-sitter
-    stylua
     shfmt
     ripgrep
     fd
@@ -64,6 +61,12 @@
     spirv-tools
     spirv-cross
     vcpkg
+
+    # Lua Development
+    lua
+    lua-language-server
+    luajitPackages.luarocks
+    stylua
 
     # C# Development
     (dotnetCorePackages.combinePackages [
