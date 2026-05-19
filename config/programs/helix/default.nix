@@ -67,7 +67,7 @@
         injection-regex = "lua";
         file-types = ["lua" "rockspec"];
         shebangs = ["lua" "luajit"];
-        roots = [".luarc.json" ".luacheckrc" ".stylua.toml" "selene.toml" ".git"];
+        roots = [".luarc.json" ".luacheckrc" ".stylua.toml" "selene.toml"];
         comment-token = "--";
         block-comment-tokens = {
           start = "--[[";

@@ -6,8 +6,8 @@ input_path = "~/.config/noctalia/templates/starshipCustom.toml"
 output_path = "~/.config/starship.toml"
 
 [templates.hyprlandCustom]
-input_path = "~/.config/noctalia/templates/hyprlandCustom.conf"
-output_path = "~/.config/hypr/theme.conf"
+input_path = "~/.config/noctalia/templates/hyprlandCustom.lua"
+output_path = "~/.config/hypr/theme.lua"
 
 [templates.keyboardColor]
 input_path = "~/.config/noctalia/templates/keyboardColor.txt"

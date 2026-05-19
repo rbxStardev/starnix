@@ -5,7 +5,6 @@
     address: "127.0.0.1:6600",
     theme: "gruvbox",
     
-    // Aproveita o suporte do Ghostty ao protocolo Kitty para imagens de alta qualidade
     album_art: (
         method: Kitty,
         max_size_px: (width: 0, height: 0),
