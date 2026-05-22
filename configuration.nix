@@ -128,6 +128,7 @@
     zed-editor
     helix
     yazi
+    libreoffice
     # jetbrains.rider
     zapzap
     telegram-desktop
