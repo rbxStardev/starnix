@@ -123,7 +123,6 @@
     tmux
     tmate
     ghostty
-    (callPackage ./pkgs/atlauncher.nix {})
     (prismlauncher.override {
       jdks = [graalvmPackages.graalvm-ce zulu8 zulu17 zulu21 zulu];
     })
