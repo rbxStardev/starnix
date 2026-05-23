@@ -132,7 +132,7 @@
     helix
     yazi
     libreoffice
-    davinci-resolve
+    # davinci-resolve
     # jetbrains.rider
     zapzap
     telegram-desktop
