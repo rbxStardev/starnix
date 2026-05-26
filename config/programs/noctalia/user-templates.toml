@@ -12,6 +12,7 @@ output_path = "~/.config/hypr/theme.lua"
 [templates.keyboardColor]
 input_path = "~/.config/noctalia/templates/keyboardColor.txt"
 output_path = "~/.config/keyboardColor.txt"
+post_hook = "~/.config/noctalia/scripts/keyboardColorUpdate.sh"
 
 # User-defined templates
 # Add your custom templates below

@@ -53,11 +53,9 @@ in {
     version = 2;
   };
 
-  home.file.".config/noctalia/templates".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nix/config/programs/noctalia/templates";
-
-  home.file.".config/noctalia/user-templates.toml".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nix/config/programs/noctalia/user-templates.toml";
+  xdg.configFile = {
+    "noctalia/user-templates.toml".source = ./user-templates.toml;
+    "noctalia/templates".source = ./templates;
+    "noctalia/scripts".source = ./scripts;
+  };
 }
