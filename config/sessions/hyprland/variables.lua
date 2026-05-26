@@ -15,11 +15,11 @@ local variables = {
 	gestureFingersMore = 4,
 	-- Blur
 	blurEnabled = true,
-	blurSpecialWs = false,
+	blurSpecialWs = true,
 	blurPopups = true,
 	blurInputMethods = true,
-	blurSize = 3,
-	blurPasses = 2,
+	blurSize = 7,
+	blurPasses = 3,
 	blurVibrancy = 0.1696,
 	blurXray = false,
 	-- Shadow
