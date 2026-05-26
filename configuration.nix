@@ -126,21 +126,16 @@
     (prismlauncher.override {
       jdks = [graalvmPackages.graalvm-ce zulu8 zulu17 zulu21 zulu];
     })
-    # gitkraken
     zed-editor
     helix
     yazi
     libreoffice
-    # davinci-resolve
-    # jetbrains.rider
-    hydralauncher
     zapzap
     telegram-desktop
     element-desktop
     obs-studio
     steam-run
     vesktop
-    # ankama-launcher
     blender
     krita
     pear-desktop
