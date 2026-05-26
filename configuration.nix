@@ -133,13 +133,14 @@
     libreoffice
     # davinci-resolve
     # jetbrains.rider
+    hydralauncher
     zapzap
     telegram-desktop
     element-desktop
     obs-studio
     steam-run
     vesktop
-    ankama-launcher
+    # ankama-launcher
     blender
     krita
     pear-desktop
@@ -233,6 +234,10 @@
     enable = true;
   };
   services.lact.enable = true;
+  services.zerotierone = {
+    enable = false;
+    joinNetworks = ["2873fd00f2015084"];
+  };
 
   # Install firefox.
   programs.firefox = {
@@ -432,6 +437,7 @@
   boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 0;
+  boot.plymouth.enable = true;
 
   # Kernel Packages and Optimization
   boot.kernelPackages = pkgs.linuxPackages_latest;
