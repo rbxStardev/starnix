@@ -125,8 +125,18 @@
       nixd = {
         command = "nixd";
         config = {
-          nixpkgs = {
-            expr = "import <nixpkgs> {}";
+          nixd = {
+            nixpkgs = {
+              expr = "import <nixpkgs> {}";
+            };
+            options = {
+              nixos = {
+                expr = ''(builtins.getFlake "/home/star/NixOS").nixosConfigurations.machine.options'';
+              };
+              flake-parts = {
+                expr = ''(builtins.getFlake "/home/star/NixOS").debug.options'';
+              };
+            };
           };
         };
       };
