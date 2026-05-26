@@ -51,6 +51,16 @@ format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
 style = "bg:lang_bg"
 symbol = ""
 
+[dotnet]
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = ""
+
+[lua]
+format = "[[ $symbol ($version) ](fg:on_lang bg:lang_bg)]($style)"
+style = "bg:lang_bg"
+symbol = "󰢱"
+
 [nix_shell]
 format = "[[ $symbol ($state) ](fg:on_lang bg:lang_bg)]($style)"
 impure_msg = "impure"
