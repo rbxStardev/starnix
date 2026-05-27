@@ -3,7 +3,18 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "JetBrainsMono Nerd Font";
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Italic";
+        };
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
         size = 12;
       };
       window = {
