@@ -20,8 +20,8 @@ hl.layer_rule({
 
 -- Regras para o Background e Shell
 hl.layer_rule({
-	name = "noctalia-bg",
-	match = { namespace = "noctalia-background-" },
+	name = "noctalia",
+	match = { namespace = "noctalia-background-.*$" },
 	blur = true,
 	blur_popups = true,
 	ignore_alpha = 0.5,

@@ -52,9 +52,6 @@ in {
   ];
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
-  home.file."nix/config/sessions/hyprland/.luarc.json".text = builtins.toJSON {
-    workspace.library = ["${pkgs.hyprland}/share/hypr/stubs"];
-  };
 
   xdg.configFile = {
     "hypr/hyprland.lua".source = ./hyprland.lua;

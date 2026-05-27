@@ -1,1 +1,2 @@
-/nix/store/9954h8y4wpqsc7ixmayg4rgnqsg0w6p6-home-manager-files/nix/config/sessions/hyprland/.luarc.json
+{"workspace":{"library":["/run/current-system/sw/share/hypr/stubs"]}}
+
