@@ -72,8 +72,8 @@ hl.window_rule({
 
 -- Ghostty / NMTUI
 hl.window_rule({
-	name = "nmtui-ghostty",
-	match = { class = "ghostty", title = "nmtui" },
+	name = "nmtui-alacritty",
+	match = { class = "alacritty", title = "nmtui" },
 	float = true,
 	size = "60% 70%",
 	center = 1,

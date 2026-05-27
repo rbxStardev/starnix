@@ -11,6 +11,10 @@
           enabled = true;
         }
         {
+          id = "alacritty";
+          enabled = true;
+        }
+        {
           id = "gtk";
           enabled = true;
         }

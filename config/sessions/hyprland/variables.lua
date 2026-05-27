@@ -1,7 +1,7 @@
 local variables = {
 	-- ### Hyprland ###
 	-- Apps
-	terminal = "ghostty",
+	terminal = "alacritty",
 	browser = "firefox",
 	editor = "zeditor",
 	fileExplorer = "thunar",

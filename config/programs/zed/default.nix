@@ -72,7 +72,7 @@
         };
         env = {
           EDITOR = "zeditor --wait";
-          TERM = "ghostty";
+          TERM = "alacritty";
         };
         font_family = "JetBrainsMono Nerd Font";
         font_features = null;

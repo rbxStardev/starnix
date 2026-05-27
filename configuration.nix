@@ -123,6 +123,7 @@
     tmux
     tmate
     ghostty
+    alacritty
     (prismlauncher.override {
       jdks = [graalvmPackages.graalvm-ce zulu8 zulu17 zulu21 zulu];
     })
@@ -273,19 +274,42 @@
   };
 
   # XDG Portals
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-    config = {
-      hyprland = {
-        default = ["hyprland" "gtk"];
-        "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
-        "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-termfilechooser
+      ];
+      config = {
+        hyprland = {
+          default = ["hyprland" "gtk"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+          "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+        };
+        common = {
+          default = ["gtk"];
+          "org.freedesktop.impl.portal.FileChooser" = ["termfilechooser"];
+        };
       };
-      common.default = ["gtk"];
+    };
+
+    configFile = {
+      "xdg-desktop-portal-termfilechooser/config" = {
+        force = true;
+        executable = true;
+        text = ''
+          [filechooser]
+          cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+          default_dir=$HOME/Downloads
+          create_help_file=1
+          env=TERMCMD='alacritty --title filechooser'
+          env=PATH="$PATH:/run/current-system/sw/bin"
+          open_mode=suggested
+          save_mode=last
+        '';
+      };
     };
   };
 
