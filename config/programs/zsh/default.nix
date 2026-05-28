@@ -23,16 +23,16 @@
     };
 
     plugins = [
-      {
-        name = "zsh-notify";
-        src = pkgs.fetchFromGitHub {
-          owner = "marzocchi";
-          repo = "zsh-notify";
-          rev = "master";
-          sha256 = "sha256-ovmnl+V1B7J/yav0ep4qVqlZOD3Ex8sfrkC92dXPLFI=";
-        };
-        file = "notify.plugin.zsh";
-      }
+      # {
+      #   name = "zsh-notify";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "marzocchi";
+      #     repo = "zsh-notify";
+      #     rev = "master";
+      #     sha256 = "sha256-ovmnl+V1B7J/yav0ep4qVqlZOD3Ex8sfrkC92dXPLFI=";
+      #   };
+      #   file = "notify.plugin.zsh";
+      # }
     ];
 
     oh-my-zsh = {
