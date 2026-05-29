@@ -299,7 +299,7 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "br";
-    variant = "";
+    variant = "abnt2";
   };
 
   i18n.inputMethod = {
